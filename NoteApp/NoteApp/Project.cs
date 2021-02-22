@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
-    class Project
+    public class Project
     {
+
     }
 }
