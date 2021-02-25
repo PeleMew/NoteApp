@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
+    /// <summary>
+    /// Класс "Заметка" хранящий информацию о названии, тексте,
+    /// категории, времени создания и изменения заметки
+    /// </summary>
     public class Note
     {
+        /// <summary>
+        /// Название заметки, не более 50 символов
+        /// </summary>
         private string _name;
 
         public string Name
@@ -31,6 +38,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Категория заметки
+        /// </summary>
         private NoteCategory _category;
 
         public NoteCategory Category
@@ -47,6 +57,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Текст заметки
+        /// </summary>
         private string _text;
 
         public string Text
@@ -63,6 +76,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Время создания заметки
+        /// </summary>
         private DateTime _creationTime;
 
         public DateTime CreationTime
@@ -78,6 +94,10 @@ namespace NoteApp
             }
         }
 
+
+        /// <summary>
+        /// Время последнего изменения заметки
+        /// </summary>
         private DateTime _lastChangeTime;
 
         public DateTime LastChangeTime
@@ -93,6 +113,12 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Метод устанавливающий значения параметров
+        /// </summary>
+        /// <param name="name">Параметр имя заметки</param>
+        /// <param name="category">Параметр категория заметки</param>
+        /// <param name="text">Параметр текст заметки</param>
         public Note(string name, NoteCategory category, string text)
         {
             Name = name;
