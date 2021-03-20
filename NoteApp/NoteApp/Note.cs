@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace NoteApp
 {
@@ -10,13 +11,16 @@ namespace NoteApp
     /// Класс "Заметка" хранящий информацию о названии, тексте,
     /// категории, времени создания и изменения заметки
     /// </summary>
-    public class Note
+    public class Note:ICloneable
     {
         /// <summary>
         /// Название заметки, не более 50 символов
         /// </summary>
         private string _name;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Name
         {
             get
@@ -88,7 +92,7 @@ namespace NoteApp
                 return _creationTime;
             }
 
-            set
+            private set
             {
                 _creationTime = value;
             }
@@ -107,18 +111,27 @@ namespace NoteApp
                 return _lastChangeTime;
             }
 
-            set
+            private set
             {
                 _lastChangeTime = value;
             }
         }
 
         /// <summary>
-        /// Метод устанавливающий значения параметров
+        /// Создает экземпляр класса <see cref="Note"/>
         /// </summary>
         /// <param name="name">Параметр имя заметки</param>
         /// <param name="category">Параметр категория заметки</param>
         /// <param name="text">Параметр текст заметки</param>
+        [JsonConstructor]
+        public Note(string name, NoteCategory category, string text, DateTime creationTime, DateTime lastChangeTime)
+        {
+            Name = name;
+            Category = category;
+            Text = text;
+            CreationTime = DateTime.Now;
+            LastChangeTime = DateTime.Now;
+        }
         public Note(string name, NoteCategory category, string text)
         {
             Name = name;
@@ -126,6 +139,11 @@ namespace NoteApp
             Text = text;
             CreationTime = DateTime.Now;
             LastChangeTime = DateTime.Now;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

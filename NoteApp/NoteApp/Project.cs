@@ -14,24 +14,6 @@ namespace NoteApp
         /// <summary>
         /// Список всех заметок
         /// </summary>
-        private List<Note> _notes;
-
-        public List<Note> Notes
-        {
-            get
-            {
-                return _notes;
-            }
-
-            set
-            {
-                _notes = Notes;
-            }
-        }
-
-        public Project()
-        {
-            
-        }
+        public List<Note> Notes { get; set; } = new List<Note>();
     }
 }
