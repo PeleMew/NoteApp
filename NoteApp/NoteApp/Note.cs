@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace NoteApp
 {
     /// <summary>
-    /// Класс "Заметка" хранящий информацию о названии, тексте,
+    /// "Заметка" хранит информацию о названии, тексте,
     /// категории, времени создания и изменения заметки
     /// </summary>
     public class Note:ICloneable
@@ -17,6 +17,26 @@ namespace NoteApp
         /// Название заметки, не более 50 символов
         /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Категории заметок
+        /// </summary>
+        private NoteCategory _category;
+
+        /// <summary>
+        /// Текст заметки
+        /// </summary>
+        private string _text;
+
+        /// <summary>
+        /// Время создания заметки
+        /// </summary>
+        private DateTime _creationTime;
+
+        /// <summary>
+        /// Время последнего изменения заметки
+        /// </summary>
+        private DateTime _lastChangeTime;
 
         /// <summary>
         /// 
@@ -40,12 +60,7 @@ namespace NoteApp
                     _lastChangeTime = DateTime.Now;
                 }
             }
-        }
-
-        /// <summary>
-        /// Категория заметки
-        /// </summary>
-        private NoteCategory _category;
+        } 
 
         public NoteCategory Category
         {
@@ -61,11 +76,6 @@ namespace NoteApp
             }
         }
 
-        /// <summary>
-        /// Текст заметки
-        /// </summary>
-        private string _text;
-
         public string Text
         {
             get
@@ -80,11 +90,6 @@ namespace NoteApp
             }
         }
 
-        /// <summary>
-        /// Время создания заметки
-        /// </summary>
-        private DateTime _creationTime;
-
         public DateTime CreationTime
         {
             get
@@ -97,12 +102,6 @@ namespace NoteApp
                 _creationTime = value;
             }
         }
-
-
-        /// <summary>
-        /// Время последнего изменения заметки
-        /// </summary>
-        private DateTime _lastChangeTime;
 
         public DateTime LastChangeTime
         {
@@ -120,9 +119,9 @@ namespace NoteApp
         /// <summary>
         /// Создает экземпляр класса <see cref="Note"/>
         /// </summary>
-        /// <param name="name">Параметр имя заметки</param>
-        /// <param name="category">Параметр категория заметки</param>
-        /// <param name="text">Параметр текст заметки</param>
+        /// <param name="name">имя заметки</param>
+        /// <param name="category">категория заметки</param>
+        /// <param name="text">текст заметки</param>
         [JsonConstructor]
         public Note(string name, NoteCategory category, string text, DateTime creationTime, DateTime lastChangeTime)
         {
