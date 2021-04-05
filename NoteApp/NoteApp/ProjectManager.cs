@@ -5,53 +5,56 @@ using Newtonsoft.Json;
 namespace NoteApp
 {
     /// <summary>
-    /// "Менеджер проекта" реализует метод
-    /// для сохранения проекта в файл и метод загрузки из файла
+    /// Класс <see cref="ProjectManager"/>, выполняющий сохранение проекта в файл и загрузку проекта из файла
     /// </summary>
     public class ProjectManager
     {
         /// <summary>
-        /// хранит имя файла
+        /// Название файла
         /// </summary>
         private const string FileName = "NoteApp.notes";
 
         /// <summary>
-        /// хранит путь до файла
+        /// Путь до файла
         /// </summary>
-        public static readonly string _path =
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + FileName;
+        public static string DeafaultPath { get; set; } =
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\NoteApp";
 
         /// <summary>
-        /// сериализует объект Project в файл
+        /// Метод для сохранения данных в файл
         /// </summary>
-        /// <param name="project">сериализируемый объект</param>
-        public static void SaveToFile(Project project)
+        public static void SaveToFile(Project data, string path)
         {
             JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamWriter sw = new StreamWriter(_path))
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            path += "\\" + FileName;
+            using (StreamWriter sw = new StreamWriter(path))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, project);
+                serializer.Serialize(writer, data);
             }
         }
 
         /// <summary>
-        /// дессериализирует объект из файла
+        /// Метод для загрузки из файла
         /// </summary>
-        /// <returns>дессериализированный объект</returns>
-        public static Project LoadFromFile()
+        public static Project LoadFromFile(string path)
         {
             Project project = new Project();
 
             JsonSerializer serializer = new JsonSerializer();
 
-            if (!File.Exists(_path))
+            path += "\\" + FileName;
+            if (!File.Exists(path))
             {
                 return new Project();
             }
 
-            using (StreamReader sr = new StreamReader(_path))
+            using (StreamReader sr = new StreamReader(path))
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 project = serializer.Deserialize<Project>(reader);

@@ -39,7 +39,7 @@ namespace NoteApp
         private DateTime _lastChangeTime;
 
         /// <summary>
-        /// 
+        /// Возвращает и задает название заметки
         /// </summary>
         public string Name
         {
@@ -60,8 +60,11 @@ namespace NoteApp
                     _lastChangeTime = DateTime.Now;
                 }
             }
-        } 
+        }
 
+        /// <summary>
+        /// Возвращает и задает категорию заметки
+        /// </summary>
         public NoteCategory Category
         {
             get
@@ -76,6 +79,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает текст заметки
+        /// </summary>
         public string Text
         {
             get
@@ -90,6 +96,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает время создания заметки
+        /// </summary>
         public DateTime CreationTime
         {
             get
@@ -103,6 +112,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает время последнего изменения заметки
+        /// </summary>
         public DateTime LastChangeTime
         {
             get
@@ -119,9 +131,9 @@ namespace NoteApp
         /// <summary>
         /// Создает экземпляр класса <see cref="Note"/>
         /// </summary>
-        /// <param name="name">имя заметки</param>
-        /// <param name="category">категория заметки</param>
-        /// <param name="text">текст заметки</param>
+        /// <param name="name"></param>
+        /// <param name="category"></param>
+        /// <param name="text"></param>
         [JsonConstructor]
         public Note(string name, NoteCategory category, string text, DateTime creationTime, DateTime lastChangeTime)
         {
@@ -131,6 +143,13 @@ namespace NoteApp
             CreationTime = DateTime.Now;
             LastChangeTime = DateTime.Now;
         }
+
+        /// <summary>
+        /// Создает экземпляр
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="category"></param>
+        /// <param name="text"></param>
         public Note(string name, NoteCategory category, string text)
         {
             Name = name;
@@ -140,6 +159,9 @@ namespace NoteApp
             LastChangeTime = DateTime.Now;
         }
 
+        /// <summary>
+        /// Метод для создания копии объекта
+        /// </summary>
         public object Clone()
         {
             return this.MemberwiseClone();

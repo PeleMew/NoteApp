@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace NoteApp
 {
     /// <summary>
-    /// "Проект" содержит список всех заметок в приложении
+    /// Класс <see cref="Project"/>, хранящий список заметок
     /// </summary>
     public class Project
     {
         /// <summary>
-        /// Список всех заметок
+        /// Вовзращает и задает список заметок
         /// </summary>
         public List<Note> Notes { get; set; } = new List<Note>();
     }
