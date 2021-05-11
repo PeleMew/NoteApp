@@ -85,8 +85,9 @@ namespace NoteAppUI
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -101,20 +102,23 @@ namespace NoteAppUI
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AddToolStripMenuItem.Text = "Add note";
+            this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.EditNoteToolStripMenuItem.Text = "Edit note";
+            this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.RemoveNoteToolStripMenuItem.Text = "Remove note";
+            this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -184,6 +188,7 @@ namespace NoteAppUI
             this.RemoveButton.TabIndex = 2;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // EditButton
             // 
@@ -193,6 +198,7 @@ namespace NoteAppUI
             this.EditButton.TabIndex = 1;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // AddButton
             // 
@@ -316,6 +322,7 @@ namespace NoteAppUI
             this.Controls.Add(this.MainFormStripMenu);
             this.Name = "MainForm";
             this.Text = "NoteApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.MainFormStripMenu.ResumeLayout(false);
             this.MainFormStripMenu.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

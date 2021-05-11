@@ -143,6 +143,7 @@ namespace NoteAppUI
             this.EditCancelButton.TabIndex = 19;
             this.EditCancelButton.Text = "Cancel";
             this.EditCancelButton.UseVisualStyleBackColor = true;
+            this.EditCancelButton.Click += new System.EventHandler(this.EditCancelButton_Click);
             // 
             // NoteForm
             // 
