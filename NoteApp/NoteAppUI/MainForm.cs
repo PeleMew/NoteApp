@@ -7,8 +7,14 @@ namespace NoteAppUI
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+		/// Объект класса Project для хранения заметок
+		/// </summary>
         private Project _project;
 
+        /// <summary>
+		/// Коллекция объектов Note для хранения заметок по выбранной категории
+		/// </summary>
         private List<Note> _categoryNotes;
 
 
@@ -18,6 +24,7 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
+            _project = ProjectManager.LoadFromFile(ProjectManager.DefaultPath);
         }
 
 
@@ -29,7 +36,9 @@ namespace NoteAppUI
             if (noteForm.DialogResult == DialogResult.OK)
             {
                 var created = noteForm.Note;
-                
+                _project.Notes.Add(created);
+                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+
             }
 
         }
