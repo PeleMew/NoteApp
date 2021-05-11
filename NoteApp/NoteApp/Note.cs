@@ -8,15 +8,14 @@ using Newtonsoft.Json;
 namespace NoteApp
 {
     /// <summary>
-    /// "Заметка" хранит информацию о названии, тексте,
-    /// категории, времени создания и изменения заметки
+    /// Класс <see cref="Note"/>, хранящий информацию о заметке
     /// </summary>
-    public class Note:ICloneable
+    public class Note : ICloneable
     {
         /// <summary>
         /// Название заметки, не более 50 символов
         /// </summary>
-        private string _name;
+        private string _name = "Без названия";
 
         /// <summary>
         /// Категории заметок
@@ -31,12 +30,12 @@ namespace NoteApp
         /// <summary>
         /// Время создания заметки
         /// </summary>
-        private DateTime _creationTime;
+        private DateTime _createdTime;
 
         /// <summary>
         /// Время последнего изменения заметки
         /// </summary>
-        private DateTime _lastChangeTime;
+        private DateTime _modifiedTime;
 
         /// <summary>
         /// Возвращает и задает название заметки
@@ -57,7 +56,7 @@ namespace NoteApp
                 else
                 {
                     _name = value;
-                    _lastChangeTime = DateTime.Now;
+                    _modifiedTime = DateTime.Now;
                 }
             }
         }
@@ -75,7 +74,7 @@ namespace NoteApp
             set
             {
                 _category = value;
-                _lastChangeTime = DateTime.Now;
+                _modifiedTime = DateTime.Now;
             }
         }
 
@@ -92,39 +91,39 @@ namespace NoteApp
             set
             {
                 _text = value;
-                _lastChangeTime = DateTime.Now;
+                _modifiedTime = DateTime.Now;
             }
         }
 
         /// <summary>
         /// Возвращает и задает время создания заметки
         /// </summary>
-        public DateTime CreationTime
+        public DateTime CreatedTime
         {
             get
             {
-                return _creationTime;
+                return _createdTime;
             }
 
             private set
             {
-                _creationTime = value;
+                _createdTime = value;
             }
         }
 
         /// <summary>
         /// Возвращает и задает время последнего изменения заметки
         /// </summary>
-        public DateTime LastChangeTime
+        public DateTime ModifiedTime
         {
             get
             {
-                return _lastChangeTime;
+                return _modifiedTime;
             }
 
             private set
             {
-                _lastChangeTime = value;
+                _modifiedTime = value;
             }
         }
 
@@ -135,13 +134,13 @@ namespace NoteApp
         /// <param name="category"></param>
         /// <param name="text"></param>
         [JsonConstructor]
-        public Note(string name, NoteCategory category, string text, DateTime creationTime, DateTime lastChangeTime)
+        public Note(string name, NoteCategory category, string text, DateTime createdTime, DateTime modifiedTime)
         {
             Name = name;
             Category = category;
             Text = text;
-            CreationTime = DateTime.Now;
-            LastChangeTime = DateTime.Now;
+            CreatedTime = DateTime.Now;
+            ModifiedTime = DateTime.Now;
         }
 
         /// <summary>
@@ -155,8 +154,8 @@ namespace NoteApp
             Name = name;
             Category = category;
             Text = text;
-            CreationTime = DateTime.Now;
-            LastChangeTime = DateTime.Now;
+            CreatedTime = DateTime.Now;
+            ModifiedTime = DateTime.Now;
         }
 
         /// <summary>
