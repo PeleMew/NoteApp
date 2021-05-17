@@ -7,16 +7,23 @@ namespace NoteAppUI
 {
     public partial class MainForm : Form
     {
+
         /// <summary>
-		/// Объект класса Project для хранения заметок
-		/// </summary>
+        /// Поле для хранения экземпляра проекта <see cref="Project"/>.
+        /// </summary>
         private Project _project;
 
-        /// <summary>
-		/// Коллекция объектов Note для хранения заметок по выбранной категории
-		/// </summary>
-        private List<Note> _categoryNotes;
-
+        public Project Project
+        {
+            get
+            {
+                return _project;
+            }
+            set
+            {
+                _project = value;
+            }
+        }
 
         /// <summary>
         /// Конструктор главной формы
@@ -24,27 +31,44 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
-            _project = ProjectManager.LoadFromFile(ProjectManager.DefaultPath);
         }
 
 
+        /// <summary>
+        /// Метод для добавления новой заметки в проект.
+        /// </summary>
         private void AddButton_Click(object sender, EventArgs e)
         {
             NoteForm noteForm = new NoteForm();
             noteForm.ShowDialog();
-
             if (noteForm.DialogResult == DialogResult.OK)
             {
                 var created = noteForm.Note;
                 _project.Notes.Add(created);
-                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+                NoteListBox.Items.Add(created.Name);
 
             }
-
         }
+
 
         private void EditButton_Click(object sender, EventArgs e)
         {
+            var selectedIndex = NoteListBox.SelectedIndex;
+            var selectedNote = _project.Notes[selectedIndex];
+            var noteForm = new NoteForm();
+            noteForm.Note = selectedNote;
+            noteForm.ShowDialog();
+
+            if (noteForm.DialogResult == DialogResult.OK)
+            {
+                var editedNote = noteForm.Note;
+                _project.Notes.RemoveAt(selectedIndex);
+                _project.Notes.Insert(selectedIndex, editedNote);
+                NoteListBox.Items.RemoveAt(selectedIndex);
+                NoteListBox.Items.Insert(selectedIndex, editedNote.Name);
+                NoteListBox.SelectedIndex = selectedIndex;
+
+            }
 
         }
 
@@ -60,7 +84,6 @@ namespace NoteAppUI
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
         }
     }
 }

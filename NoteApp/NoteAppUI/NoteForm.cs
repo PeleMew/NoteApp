@@ -15,7 +15,6 @@ namespace NoteAppUI
             {
                 return _note;
             }
-
             set
             {
                 _note = value;
