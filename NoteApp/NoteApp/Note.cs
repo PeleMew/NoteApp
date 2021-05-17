@@ -11,7 +11,7 @@ namespace NoteApp
         /// <summary>
         /// Название заметки, не более 50 символов
         /// </summary>
-        private string _name = "Без названия";
+        private string _name;
 
         /// <summary>
         /// Категории заметок
@@ -45,7 +45,7 @@ namespace NoteApp
 
             set
             {
-                if (_name.Length > 50)
+                if (value.Length > 50)
                 {
                     throw new ArgumentException("Название ограничено 50 символами");
                 }
@@ -135,8 +135,8 @@ namespace NoteApp
             Name = name;
             Category = category;
             Text = text;
-            CreatedTime = DateTime.Now;
-            ModifiedTime = DateTime.Now;
+            CreatedTime = createdTime;
+            ModifiedTime = modifiedTime;
         }
 
         /// <summary>
@@ -147,9 +147,9 @@ namespace NoteApp
         /// <param name="text"></param>
         public Note(string name, NoteCategory category, string text)
         {
-            Name = name;
-            Category = category;
-            Text = text;
+            Name = "Без названия";
+            Category = NoteCategory.Other;
+            Text = null;
             CreatedTime = DateTime.Now;
             ModifiedTime = DateTime.Now;
         }

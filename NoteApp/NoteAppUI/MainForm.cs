@@ -31,6 +31,14 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Documents);
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Finance);
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.HealthAndSport);
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Home);
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Other);
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.People);
+            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Work);
+            CategoryComboBox.Items.Add("All");
         }
 
 
@@ -45,7 +53,9 @@ namespace NoteAppUI
             {
                 var created = noteForm.Note;
                 _project.Notes.Add(created);
+                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
                 NoteListBox.Items.Add(created.Name);
+                NoteListBox.SelectedIndex = NoteListBox.Items.Count - 1;
 
             }
         }
@@ -66,6 +76,7 @@ namespace NoteAppUI
                 _project.Notes.Insert(selectedIndex, editedNote);
                 NoteListBox.Items.RemoveAt(selectedIndex);
                 NoteListBox.Items.Insert(selectedIndex, editedNote.Name);
+                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
                 NoteListBox.SelectedIndex = selectedIndex;
 
             }

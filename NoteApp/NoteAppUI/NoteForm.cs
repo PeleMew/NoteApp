@@ -44,8 +44,16 @@ namespace NoteAppUI
 
         private void EditOKButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            this.Close();
+            if (EditNameTextBox.Text.Length > 50)
+            {
+                MessageBox.Show("The size of title should be less, than 50 symbols",
+                    "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void EditCancelButton_Click(object sender, EventArgs e)
@@ -56,12 +64,12 @@ namespace NoteAppUI
 
         private void EditNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            _note.Name = EditNameTextBox.Text;
+            Note.Name = EditNameTextBox.Text;
         }
 
         private void EditTextBox_TextChanged(object sender, EventArgs e)
         {
-            _note.Text = EditTextBox.Text;
+            Note.Text = EditTextBox.Text;
         }
     }
 }
