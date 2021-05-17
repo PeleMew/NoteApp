@@ -30,7 +30,7 @@ namespace NoteAppUI
         private void InitializeComponent()
         {
             this.EditTitleLabel = new System.Windows.Forms.Label();
-            this.EditTitleTextBox = new System.Windows.Forms.TextBox();
+            this.EditNameTextBox = new System.Windows.Forms.TextBox();
             this.EditCategoryLabel = new System.Windows.Forms.Label();
             this.EditCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.EditCreatedLabel = new System.Windows.Forms.Label();
@@ -51,12 +51,13 @@ namespace NoteAppUI
             this.EditTitleLabel.TabIndex = 9;
             this.EditTitleLabel.Text = "Title:";
             // 
-            // EditTitleTextBox
+            // EditNameTextBox
             // 
-            this.EditTitleTextBox.Location = new System.Drawing.Point(70, 6);
-            this.EditTitleTextBox.Name = "EditTitleTextBox";
-            this.EditTitleTextBox.Size = new System.Drawing.Size(601, 20);
-            this.EditTitleTextBox.TabIndex = 10;
+            this.EditNameTextBox.Location = new System.Drawing.Point(70, 6);
+            this.EditNameTextBox.Name = "EditNameTextBox";
+            this.EditNameTextBox.Size = new System.Drawing.Size(601, 20);
+            this.EditNameTextBox.TabIndex = 10;
+            this.EditNameTextBox.TextChanged += new System.EventHandler(this.EditNameTextBox_TextChanged);
             // 
             // EditCategoryLabel
             // 
@@ -122,6 +123,7 @@ namespace NoteAppUI
             this.EditTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.EditTextBox.Size = new System.Drawing.Size(656, 328);
             this.EditTextBox.TabIndex = 17;
+            this.EditTextBox.TextChanged += new System.EventHandler(this.EditTextBox_TextChanged);
             // 
             // EditOKButton
             // 
@@ -159,7 +161,7 @@ namespace NoteAppUI
             this.Controls.Add(this.EditCreatedLabel);
             this.Controls.Add(this.EditCategoryComboBox);
             this.Controls.Add(this.EditCategoryLabel);
-            this.Controls.Add(this.EditTitleTextBox);
+            this.Controls.Add(this.EditNameTextBox);
             this.Controls.Add(this.EditTitleLabel);
             this.Name = "NoteForm";
             this.Text = "Add/Edit Note";
@@ -171,7 +173,7 @@ namespace NoteAppUI
         #endregion
 
         private System.Windows.Forms.Label EditTitleLabel;
-        private System.Windows.Forms.TextBox EditTitleTextBox;
+        private System.Windows.Forms.TextBox EditNameTextBox;
         private System.Windows.Forms.Label EditCategoryLabel;
         private System.Windows.Forms.ComboBox EditCategoryComboBox;
         private System.Windows.Forms.Label EditCreatedLabel;
