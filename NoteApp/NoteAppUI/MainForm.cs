@@ -13,17 +13,7 @@ namespace NoteAppUI
         /// </summary>
         private Project _project = new Project();
 
-        public Project Project
-        {
-            get
-            {
-                return _project;
-            }
-            set
-            {
-                _project = value;
-            }
-        }
+        private List<Note> _byCategory;
 
         /// <summary>
         /// Конструктор главной формы
@@ -39,8 +29,17 @@ namespace NoteAppUI
             CategoryComboBox.Items.Add(NoteApp.NoteCategory.People);
             CategoryComboBox.Items.Add(NoteApp.NoteCategory.Work);
             CategoryComboBox.Items.Add("All");
+            CategoryComboBox.SelectedItem = "All";
         }
 
+        private void ShowNoteInformation(List<Note> noteList, int selectedIndex)
+        {
+            NameLabel.Text = noteList[selectedIndex].Name;
+            NoteTextBox.Text = noteList[selectedIndex].Text;
+            CategoryLabel.Text = "Category: " + noteList[selectedIndex].Category.ToString();
+            CreatedDateTimePicker.Value = noteList[selectedIndex].CreatedTime;
+            ModifiedDateTimePicker.Value = noteList[selectedIndex].ModifiedTime;
+        }
 
         /// <summary>
         /// Метод для добавления новой заметки в проект.
@@ -52,11 +51,28 @@ namespace NoteAppUI
             if (noteForm.DialogResult == DialogResult.OK)
             {
                 var created = noteForm.Note;
-                _project.Notes.Add(created);
+                _project.Notes.Insert(0, created);
+                _project.ChosenCategory = created;
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
-                NoteListBox.Items.Add(created.Name);
-                NoteListBox.SelectedIndex = NoteListBox.Items.Count - 1;
+                InsertInNoteListBox(created);
+            }
+        }
 
+        private void InsertInNoteListBox(Note note)
+        {
+            if (CategoryComboBox.SelectedItem.ToString() == note.Category.ToString())
+            {
+                _byCategory = _project.SortByCategory(note.Category);
+                NoteListBox.Items.Insert(0, note.Name);
+                NoteListBox.SelectedIndex = 0;
+            }
+            else
+            {
+                if (CategoryComboBox.SelectedItem.ToString() == "All")
+                {
+                    NoteListBox.Items.Insert(0, note.Name);
+                    NoteListBox.SelectedIndex = 0;
+                }
             }
         }
 
@@ -95,6 +111,23 @@ namespace NoteAppUI
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+        }
+
+        private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedIndex = NoteListBox.SelectedIndex;
+
+            if (selectedIndex > -1)
+            {
+                if (CategoryComboBox.SelectedItem.ToString() == "All")
+                {
+                    ShowNoteInformation(_project.Notes, selectedIndex);
+                }
+                else
+                {
+                    ShowNoteInformation(_byCategory, selectedIndex);
+                }
+            }
         }
     }
 }

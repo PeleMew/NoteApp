@@ -50,7 +50,7 @@ namespace NoteAppUI
             this.panel1 = new System.Windows.Forms.Panel();
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CreatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.TitleLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.CreatedLabel = new System.Windows.Forms.Label();
@@ -167,6 +167,7 @@ namespace NoteAppUI
             this.NoteListBox.Name = "NoteListBox";
             this.NoteListBox.Size = new System.Drawing.Size(270, 355);
             this.NoteListBox.TabIndex = 12;
+            this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
             // 
             // ButtonsPanel
             // 
@@ -257,7 +258,7 @@ namespace NoteAppUI
             // 
             this.panel1.Controls.Add(this.ModifiedDateTimePicker);
             this.panel1.Controls.Add(this.CreatedDateTimePicker);
-            this.panel1.Controls.Add(this.TitleLabel);
+            this.panel1.Controls.Add(this.NameLabel);
             this.panel1.Controls.Add(this.CategoryLabel);
             this.panel1.Controls.Add(this.ModifiedLabel);
             this.panel1.Controls.Add(this.CreatedLabel);
@@ -282,15 +283,15 @@ namespace NoteAppUI
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(124, 20);
             this.CreatedDateTimePicker.TabIndex = 7;
             // 
-            // TitleLabel
+            // NameLabel
             // 
-            this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TitleLabel.Location = new System.Drawing.Point(-5, 19);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(66, 29);
-            this.TitleLabel.TabIndex = 6;
-            this.TitleLabel.Text = "Title";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameLabel.Location = new System.Drawing.Point(-5, 19);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(153, 29);
+            this.NameLabel.TabIndex = 6;
+            this.NameLabel.Text = "Notes name";
             // 
             // CategoryLabel
             // 
@@ -368,7 +369,7 @@ namespace NoteAppUI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
-        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.Label ModifiedLabel;
         private System.Windows.Forms.Label CreatedLabel;
