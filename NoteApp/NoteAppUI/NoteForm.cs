@@ -7,7 +7,7 @@ namespace NoteAppUI
     public partial class NoteForm : Form
     {
 
-        private Note _note;
+        private Note _note = new Note();
 
         public Note Note
         {

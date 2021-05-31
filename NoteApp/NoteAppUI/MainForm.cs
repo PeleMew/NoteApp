@@ -11,7 +11,7 @@ namespace NoteAppUI
         /// <summary>
         /// Поле для хранения экземпляра проекта <see cref="Project"/>.
         /// </summary>
-        private Project _project;
+        private Project _project = new Project();
 
         public Project Project
         {

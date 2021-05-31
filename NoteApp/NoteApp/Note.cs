@@ -140,18 +140,22 @@ namespace NoteApp
         }
 
         /// <summary>
-        /// Создает экземпляр
+        /// Конструктор без параметров, устанавливает значения полей Название, Текст заметки, 
+        /// Категория, Время создания ,Время изменения
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="category"></param>
-        /// <param name="text"></param>
-        public Note(string name, NoteCategory category, string text)
+        public Note()
+        {
+            Name = "Без названия";
+            Text = null;
+            Category = NoteCategory.Other;
+            CreatedTime = DateTime.Now;
+        }
+
+        public Note(string name, NoteCategory category, string text) : this()
         {
             Name = "Без названия";
             Category = NoteCategory.Other;
             Text = null;
-            CreatedTime = DateTime.Now;
-            ModifiedTime = DateTime.Now;
         }
 
         /// <summary>

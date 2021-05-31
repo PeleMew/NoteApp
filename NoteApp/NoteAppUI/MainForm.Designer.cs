@@ -85,7 +85,7 @@ namespace NoteAppUI
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -102,21 +102,21 @@ namespace NoteAppUI
             // AddToolStripMenuItem
             // 
             this.AddToolStripMenuItem.Name = "AddToolStripMenuItem";
-            this.AddToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.AddToolStripMenuItem.Text = "Add note";
             this.AddToolStripMenuItem.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.EditNoteToolStripMenuItem.Text = "Edit note";
             this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.RemoveNoteToolStripMenuItem.Text = "Remove note";
             this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
@@ -151,8 +151,8 @@ namespace NoteAppUI
             // 
             this.splitContainer1.Panel2.Controls.Add(this.NoteTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(784, 426);
-            this.splitContainer1.SplitterDistance = 303;
+            this.splitContainer1.Size = new System.Drawing.Size(784, 454);
+            this.splitContainer1.SplitterDistance = 288;
             this.splitContainer1.TabIndex = 3;
             // 
             // NoteListBox
@@ -165,7 +165,7 @@ namespace NoteAppUI
             this.NoteListBox.MaximumSize = new System.Drawing.Size(1000, 800);
             this.NoteListBox.MinimumSize = new System.Drawing.Size(270, 329);
             this.NoteListBox.Name = "NoteListBox";
-            this.NoteListBox.Size = new System.Drawing.Size(300, 329);
+            this.NoteListBox.Size = new System.Drawing.Size(270, 355);
             this.NoteListBox.TabIndex = 12;
             // 
             // ButtonsPanel
@@ -175,39 +175,48 @@ namespace NoteAppUI
             this.ButtonsPanel.Controls.Add(this.RemoveButton);
             this.ButtonsPanel.Controls.Add(this.EditButton);
             this.ButtonsPanel.Controls.Add(this.AddButton);
-            this.ButtonsPanel.Location = new System.Drawing.Point(3, 377);
+            this.ButtonsPanel.Location = new System.Drawing.Point(3, 405);
             this.ButtonsPanel.Name = "ButtonsPanel";
             this.ButtonsPanel.Size = new System.Drawing.Size(255, 37);
             this.ButtonsPanel.TabIndex = 13;
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(162, 11);
+            this.RemoveButton.BackgroundImage = global::NoteAppUI.Properties.Resources.file_delete__1_;
+            this.RemoveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RemoveButton.ForeColor = System.Drawing.Color.Transparent;
+            this.RemoveButton.Location = new System.Drawing.Point(61, 6);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(75, 23);
+            this.RemoveButton.Size = new System.Drawing.Size(23, 31);
             this.RemoveButton.TabIndex = 2;
-            this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // EditButton
             // 
-            this.EditButton.Location = new System.Drawing.Point(81, 11);
+            this.EditButton.BackgroundImage = global::NoteAppUI.Properties.Resources.file_edit__1_;
+            this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditButton.ForeColor = System.Drawing.Color.Transparent;
+            this.EditButton.Location = new System.Drawing.Point(32, 6);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(75, 23);
-            this.EditButton.TabIndex = 1;
-            this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Size = new System.Drawing.Size(23, 31);
+            this.EditButton.TabIndex = 0;
+            this.EditButton.UseVisualStyleBackColor = false;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(0, 11);
+            this.AddButton.BackgroundImage = global::NoteAppUI.Properties.Resources.file_add__1_;
+            this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddButton.ForeColor = System.Drawing.Color.Transparent;
+            this.AddButton.Location = new System.Drawing.Point(3, 6);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.Size = new System.Drawing.Size(23, 31);
             this.AddButton.TabIndex = 0;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // CategoryComboBox
@@ -221,11 +230,11 @@ namespace NoteAppUI
             // ShowCategoryLabel
             // 
             this.ShowCategoryLabel.AutoSize = true;
-            this.ShowCategoryLabel.Location = new System.Drawing.Point(12, 18);
+            this.ShowCategoryLabel.Location = new System.Drawing.Point(3, 18);
             this.ShowCategoryLabel.Name = "ShowCategoryLabel";
-            this.ShowCategoryLabel.Size = new System.Drawing.Size(84, 13);
+            this.ShowCategoryLabel.Size = new System.Drawing.Size(85, 13);
             this.ShowCategoryLabel.TabIndex = 10;
-            this.ShowCategoryLabel.Text = "Show category: ";
+            this.ShowCategoryLabel.Text = "Show Сategory: ";
             // 
             // NoteTextBox
             // 
@@ -241,7 +250,7 @@ namespace NoteAppUI
             this.NoteTextBox.Name = "NoteTextBox";
             this.NoteTextBox.ReadOnly = true;
             this.NoteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.NoteTextBox.Size = new System.Drawing.Size(472, 328);
+            this.NoteTextBox.Size = new System.Drawing.Size(487, 356);
             this.NoteTextBox.TabIndex = 8;
             // 
             // panel1
@@ -317,7 +326,7 @@ namespace NoteAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 450);
+            this.ClientSize = new System.Drawing.Size(784, 478);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.MainFormStripMenu);
             this.Name = "MainForm";

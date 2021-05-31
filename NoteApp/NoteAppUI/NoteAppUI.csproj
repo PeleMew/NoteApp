@@ -80,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,6 +100,15 @@
       <Project>{24191f2e-5da1-48d5-b9e3-7cad7326ea3f}</Project>
       <Name>NoteApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_add %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_edit %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
