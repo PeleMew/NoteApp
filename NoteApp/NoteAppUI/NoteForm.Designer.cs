@@ -75,6 +75,7 @@ namespace NoteAppUI
             this.EditCategoryComboBox.Name = "EditCategoryComboBox";
             this.EditCategoryComboBox.Size = new System.Drawing.Size(162, 21);
             this.EditCategoryComboBox.TabIndex = 12;
+            this.EditCategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.EditCategoryComboBox_SelectedIndexChanged);
             // 
             // EditCreatedLabel
             // 

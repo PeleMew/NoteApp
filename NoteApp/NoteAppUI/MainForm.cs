@@ -21,14 +21,11 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Documents);
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Finance);
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.HealthAndSport);
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Home);
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Other);
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.People);
-            CategoryComboBox.Items.Add(NoteApp.NoteCategory.Work);
             CategoryComboBox.Items.Add("All");
+            foreach (NoteCategory category in Enum.GetValues(typeof (NoteCategory)))
+            {
+                CategoryComboBox.Items.Add(category);
+            }
             CategoryComboBox.SelectedItem = "All";
         }
 

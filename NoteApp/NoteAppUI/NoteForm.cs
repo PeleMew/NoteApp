@@ -33,13 +33,10 @@ namespace NoteAppUI
         public NoteForm()
         {
             InitializeComponent();
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.Documents);
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.Finance);
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.Home);
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.Other);
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.People);
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.HealthAndSport);
-            EditCategoryComboBox.Items.Add(NoteApp.NoteCategory.Work);
+            foreach (NoteCategory category in Enum.GetValues(typeof(NoteCategory)))
+            {
+                EditCategoryComboBox.Items.Add(category);
+            }
         }
 
         private void EditOKButton_Click(object sender, EventArgs e)
@@ -70,6 +67,11 @@ namespace NoteAppUI
         private void EditTextBox_TextChanged(object sender, EventArgs e)
         {
             Note.Text = EditTextBox.Text;
+        }
+
+        private void EditCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Note.Category = (NoteCategory)EditCategoryComboBox.SelectedItem;
         }
     }
 }
