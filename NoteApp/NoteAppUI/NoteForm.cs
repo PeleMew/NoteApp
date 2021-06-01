@@ -41,15 +41,16 @@ namespace NoteAppUI
 
         private void EditOKButton_Click(object sender, EventArgs e)
         {
-            if (EditNameTextBox.Text.Length > 50)
+            try
             {
-                MessageBox.Show("The size of title should be less, than 50 symbols",
-                    "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
+                Note.Name = (String.IsNullOrWhiteSpace(EditNameTextBox.Text)) ? "Без названия" : EditNameTextBox.Text;
                 DialogResult = DialogResult.OK;
                 this.Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Exeption", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             }
         }
 

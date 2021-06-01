@@ -18,6 +18,12 @@ namespace NoteApp
 
         public Note ChosenCategory { get; set; }
 
+        public List<Note> SortByDate()
+        {
+            Notes.Sort();
+            return Notes;
+        }
+
         public List<Note> SortByCategory(NoteCategory category)
         {
             List<Note> byCategoryListNote = new List<Note>();

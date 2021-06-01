@@ -126,5 +126,38 @@ namespace NoteAppUI
                 }
             }
         }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NoteListBox.Items.Clear();
+
+            if (CategoryComboBox.SelectedItem.ToString() != "All")
+            {
+                _byCategory =
+                    _project.SortByCategory((NoteCategory)CategoryComboBox.SelectedItem);
+                foreach (Note note in _byCategory)
+                {
+                    if (note.Category.ToString() == CategoryComboBox.SelectedItem.ToString())
+                    {
+                        NoteListBox.Items.Add(note.Name);
+                    }
+                }
+            }
+            else if (_project.Notes.Count > 0)
+            {
+                _byCategory = _project.SortByDate();
+
+                foreach (Note note in _byCategory)
+                {
+                    NoteListBox.Items.Add(note.Name);
+                }
+                NoteListBox.SelectedIndex = 0;
+            }
+
+            if (NoteListBox.Items.Count > 0)
+            {
+                NoteListBox.SelectedIndex = 0;
+            }
+        }
     }
 }
